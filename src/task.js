@@ -1,6 +1,7 @@
 /**
  * @class Task
  * @description This class is responsible for creating a task object
+ * @param {string} project - The project of the task
  * @param {string} title - The title of the task
  * @param {string} description - The description of the task
  * @param {string} dueDate - The due date of the task
@@ -11,8 +12,9 @@
  * Available properties:
  */
 class Task {
-  constructor (title, description, dueDate, priority, notes, checkList) {
+  constructor (project, title, description, dueDate, priority, notes, checkList) {
     this.id = Math.floor(Math.random() * 100000)
+    this.project = project
     this.title = title
     this.description = description
     this.dueDate = dueDate
@@ -46,8 +48,8 @@ class TaskManager {
     return this.tasks
   }
 
-  getTaskIndex (taskId) {
-    return this.tasks.findIndex(task => task.id === taskId)
+  getTaskIndex (task) {
+    return this.tasks.findIndex(t => t.id === task.id)
   }
 }
 
@@ -64,29 +66,35 @@ class TaskManager {
   */
 class TaskStorage {
   constructor () {
-    this.taskManager = new TaskManager()
+    this.projects = {}
   }
 
   saveTask (task) {
     if (task instanceof Task) {
+      if (!this.projects[task.project]) {
+        this.projects[task.project] = new TaskManager()
+      }
+      const taskManager = this.projects[task.project]
       // if task not in storage using taskid add it
-      if (!this.taskManager.getTaskById(task.id)) {
-        this.taskManager.tasks.push(task)
+      if (!taskManager.getTaskById(task.id)) {
+        taskManager.tasks.push(task)
       }
     }
   }
 
-  updateTask (taskId, updatedTask) {
-    const index = this.taskManager.getTaskIndex(taskId)
+  updateTask (updatedTask) {
+    const taskManager = this.projects[updatedTask.project]
+    const index = taskManager.getTaskIndex(updatedTask)
     if (index !== -1) {
-      this.taskmanager.tasks[index] = updatedTask
+      taskManager.tasks[index] = updatedTask
     }
   }
 
-  deleteTask (taskId) {
-    const index = this.taskManager.getTaskIndex(taskId)
+  deleteTask (task) {
+    const taskManager = this.projects[task.project]
+    const index = taskManager.getTaskIndex(task)
     if (index !== -1) {
-      this.taskManager.tasks.splice(index, 1)
+      taskManager.tasks.splice(index, 1)
     }
   }
 }
