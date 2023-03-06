@@ -2,13 +2,15 @@
     --sidebar-bg: #19388f;
     --sidebar-bg2: #144be1;
     --sidebar-text: #00e7b5;
+    --button-blue: #3281ff;
+    --button-red: #ff4d4d;
     --content-bg: #eef6ff;
     --content-bg2: #d9eaff;
     --main-bg: #c0dce1;
     --completed: #72ff9e;
     --high-priority: #ff9e9e;
-    --low-prority: #f8fafc;
-    --med-priority: #fcff9e;
+    --low-prority: #fcff9e;
+    --med-priority: #ffd09e;
 }
 
 * {
@@ -116,6 +118,10 @@ body {
 
 .task-info-editable {
     width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    align-items: center;
 }
 
 .task-info-editable form{
@@ -130,7 +136,42 @@ body {
     gap: .5rem;
 }
 
+.task-info-editable .button-area {
+    width: 25%;
+    display: flex;
+    gap: .5rem;
+    justify-content: space-around;
+}
+
+.task-info-editable button {
+    /* width: 10%; */
+    border: none;
+    border-radius: .5rem;
+    padding: .5rem;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    
+    color: white;
+}
+
+.task-info-editable .submit {
+    background-color: var(--button-blue);
+}
+
+.task-info-editable .cancel {
+    background-color: var(--button-red);
+}
+
 input {
+    border: none;
+    border-bottom: 1px solid var(--content-bg);
+    font-size: 1rem;
+    padding: .5rem;
+    border-radius: .5rem;
+}
+
+select {
     border: none;
     border-bottom: 1px solid var(--content-bg);
     font-size: 1rem;
@@ -170,4 +211,24 @@ input {
 /* forms */
 .hidden {
     display: none;
+}
+
+/* add button */
+
+/* add task button */
+#add-task-card {
+    background-color: var(--low-prority);
+    /* color: var(--content-bg); */
+    border: 1px solid var(--low-prority);
+    cursor: pointer;
+}
+
+#add-task-card .title {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5rem;
+    font-weight: 600;
+    cursor: pointer;
 }
