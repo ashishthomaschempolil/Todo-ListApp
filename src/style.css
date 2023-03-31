@@ -72,6 +72,12 @@ body {
     text-decoration: underline;
 }
 
+
+#add-project {
+    display: flex;
+    flex-direction: column;
+}
+
 /* main content */
 #content {
     padding: 2rem;
