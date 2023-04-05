@@ -5,7 +5,7 @@
 /.pnp
 .pnp.js
 /.DS_Store
-/.todolist-app
+/todolist-app
 
 # testing
 /coverage
