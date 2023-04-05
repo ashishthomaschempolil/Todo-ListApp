@@ -1,4 +1,9 @@
-# Getting Started with Create React App
+# To Do List App
+
+This is a simple to do list app that allows you to add, edit and delete the tasks you want to do. It also allows you to mark the tasks as completed.
+This app is built using ReactJS.
+
+## How to run the app
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
