@@ -11,8 +11,13 @@
   --high-priority: #ff9e9e;
   --low-prority: #fcff9e;
   --med-priority: #ffd09e;
+  --add-task: #ff9edf;
 }
 
+.scroll-container::-webkit-scrollbar {
+  width: 0px;
+  background-color: transparent;
+}
 
 /* main */
 #main {
@@ -22,6 +27,7 @@
   padding: 0px;
   gap: 8px;
   min-height: 100vh;
+  overflow: hidden;
 }
 
 /* sidebar */
@@ -35,8 +41,9 @@
   gap: 4rem;
   border-radius: .75rem;
   overflow: hidden;
-  min-width: max-content;
+  /* min-width: max-content; */
   box-shadow: 0 5px 10px 0px black;
+  width: 200px;
 }
 
 .sidebar-title {
@@ -80,7 +87,7 @@
   padding: 2rem;
   background: linear-gradient(135deg, var(--content-bg) 0%, var(--content-bg2) 100%);
   border-radius: .75rem;
-  overflow: hidden;
+  /* overflow: hidden; */
   box-shadow: 0 5px 10px 0px black;
 }
 
@@ -219,9 +226,8 @@ select {
 
 /* add task button */
 #add-task-card {
-  background-color: var(--low-prority);
+  background-color: var(--add-task);
   /* color: var(--content-bg); */
-  border: 1px solid var(--low-prority);
   cursor: pointer;
 }
 
